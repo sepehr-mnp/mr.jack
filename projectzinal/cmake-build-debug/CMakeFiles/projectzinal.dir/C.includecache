@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/NP/CLionProjects/projectzinal/func.h
+stdio.h
+-
+windows.h
+-
+stdbool.h
+-
+stdlib.h
+-
+time.h
+-
+string.h
+-
+structs.h
+C:/Users/NP/CLionProjects/projectzinal/structs.h
+
+C:/Users/NP/CLionProjects/projectzinal/main.c
+func.h
+C:/Users/NP/CLionProjects/projectzinal/func.h
+
+C:/Users/NP/CLionProjects/projectzinal/structs.h
+

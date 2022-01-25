@@ -1,0 +1,3 @@
+C:/Users/NP/CLionProjects/projectzinal/cmake-build-debug/CMakeFiles/projectzinal.dir
+C:/Users/NP/CLionProjects/projectzinal/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/NP/CLionProjects/projectzinal/cmake-build-debug/CMakeFiles/rebuild_cache.dir

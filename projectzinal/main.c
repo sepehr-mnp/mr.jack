@@ -2,17 +2,28 @@
 
 struct seris * seris1,*seris2;
 //file save
-int i0=0,j0=0;
+int i0=0,j0=0,savecount=0;
 int mrjacksher[4],mrjackshercount=0;
 char cards[8][2]={"SH","JW","JS","IL","MS","SG","WG","JB"};
 int suscards[7],handplay[4],handplay2[4];
 int suscardsremain=7;
 bool importedHand=0;
-char strmapname[16],strmap[128];
+char strmapname[16],strmap[128]="C:\\Users\\NP\\CLionProjects\\projectzinal\\saves\\";
 int jwlight[13][2],jwlightcount=0;
 void save(int i0,int j0){
+    char text[20];
+    char strmaptmp[128];
+    sprintf(text, "%d", savecount);
     FILE *fp;
-    fp = fopen(strmap, "w");
+    strmaptmp[0]='\0';
+    strcat(strmaptmp,strmap);
+    strcat(strmaptmp,strmapname);
+    strcat(strmaptmp,text);
+    strcat(strmaptmp,".txt");
+    savecount++;
+    printf("%s +++",strmaptmp);
+    //delay(5);
+    fp = fopen(strmaptmp, "w");
     fprintf(fp,"76\n");
     for (int i = 0; i < 9; ++i) {
         for (int j = 0; j < 13; ++j) {
@@ -56,23 +67,43 @@ void save(int i0,int j0){
     }
     fprintf(fp,"\n");
     fprintf(fp,"%d\n",mrjackshercount);
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < mrjackshercount; ++i) {
         fprintf(fp,"%d ",mrjacksher[i]);
     }
-  //  delay(10000);
+    fprintf(fp,"\n");
+    fprintf(fp,"%d",savecount);
+
+    //  delay(10000);
             fclose(fp);
+
   //  getchar();
 }
 
-void mapInput(){
+bool mapInput(bool undo){
     int lightcount=0,ilcount=0,jbcount=0;
+    char strmaptmp[128];
+    strmaptmp[0]='\0';
     FILE *fp;
-    strcat(strmap,"C:\\Users\\NP\\CLionProjects\\projectzinal\\saves\\");
-    strcat(strmap,strmapname);
-    printf("%s",strmap);
-    fp = fopen(strmap, "r");
-    if(fp==NULL){
+    strcat(strmaptmp,strmap);
+    strcat(strmaptmp,strmapname);
+    if(undo) {
+        for (int i = 0; i < 9; ++i) {
+            for (int j = 0; j < 13; ++j) {
+                map[i][j]=0;
+            }
+        }
+        char text[20];
+        sprintf(text, "%d", savecount);
+        strcat(strmaptmp,text);
+    }
+    strcat(strmaptmp,".txt");
+    //printf("%s***+",strmaptmp);
+    //delay(5);
+    fp = fopen(strmaptmp, "r");
+    if(fp==NULL && undo==0){
         fp = fopen("C:\\Users\\NP\\CLionProjects\\projectzinal\\map.txt", "r");
+    }else if(fp==NULL && undo==1){
+        return 0;
     }
     int n;
     fscanf(fp,"%d",&n);
@@ -80,7 +111,7 @@ void mapInput(){
     for (int i = 0; i < n; ++i) {
         int x,y,m;
         fscanf(fp,"%d %d %d",&x,&y,&m);
-        printf("%d %d %d\n",x,y,m);
+   //     printf("%d %d %d\n",x,y,m);
         map[x][y]=m;
         if(m<10) mapsakht[x][y]=m;
         if(m==2 || m==3) {
@@ -179,10 +210,8 @@ void mapInput(){
     mrjackshercount=n;
     for (int i = 0; i < n; ++i) {
         fscanf(fp,"%d",&(mrjacksher[i]));
-    }
-    printf("\n%d %d %d %d",mrjacksher[0],mrjacksher[1],mrjacksher[2],mrjacksher[3]);
-    delay(5);
-
+    }fscanf(fp,"%d",&savecount);
+    return 1;
 }
 void mapPrint(){
     char cardsMap[8][2]={"JW","WG","IL","JS","SH","JB","MS","SG"};
@@ -243,6 +272,7 @@ if(i%2) printf("%d    ",i);
     }
     printf("10  11  12\n");        SetConsoleTextAttribute(hConsole, 8);
     printf("-3 for menu\n");
+
 }
 void mapLight(){
     for (int i = 0; i < 9; ++i) 
@@ -923,9 +953,29 @@ void move(int c,bool mrjack){
         }
     }
 }
+int startMenu(){
+    system("cls");
+    printf("0) start new game \n1)load\n2)rewind\n");
+    int choice;
+    scanf("%d",&choice);
+    bool t =FALSE;
+    switch (choice) {
+        case 2:
+            do{
+                mapLight();
+                mapPrint();
+                t = mapInput(1);
+                if(t==0)
+                printf("^^^ %d ^^^",t);
+                delay(5);
+            }while(t);
+            return 0;
+            break;
+    }
+}
 int menu(int i,int j){
     system("cls");
-    printf("0) resume \n1)save\n2)exit discard\n");
+    printf("0) resume \n1)save\n2)undo\n");
     int choice;
     scanf("%d",&choice);
     switch (choice) {
@@ -935,6 +985,11 @@ int menu(int i,int j){
             save(i,j);
             break;
         case 2:
+            savecount-=2;
+            mapInput(1);
+            mapLight();
+            mapPrint();
+            return -1;
             break;
         default:
             break;
@@ -962,10 +1017,10 @@ int main() {
     srand(time(NULL));
     printf("enter game name: ");
     gets(strmapname);
-    strcat(strmapname,".txt");
-    printf("%s",strmapname);
-    menu(0,0);
-    mapInput();
+    int st = startMenu(0,0);
+    if(!st) return 0;
+    mapInput(0);
+    save_starting_point:
     mapLight();
     mapPrint();
     //mapLightShow();
@@ -1022,23 +1077,28 @@ int main() {
                 printf("detective select: ");
                 scanf("%d", &chrcter);
                 if (chrcter == -3) {
-                    menu(i,j);
+                    int t = menu(i,j);
+                    if(t==-1) goto save_starting_point;
                     j -= 1;
                 } else {
                      move(handplay[chrcter],1);
                     handplay[chrcter] = handplay[3 - j];
+                    save(i,j+1);
                 }
             } else {
                 printf("jack select: ");
                 scanf("%d", &chrcter);
                 if (chrcter == -3) {
-                    menu(i,j);
+                    int t = menu(i,j);
+                    if(t==-1) goto save_starting_point;
                     j -= 1;
                 } else {
-                    move(handplay[chrcter],1);
+                   move(handplay[chrcter],1);
                     handplay[chrcter] = handplay[3 - j];
+                    save(i,j+1);
                 }
             }
+
         }j0=0;
         jackUpdate();
         if(mapl[jack.posx][jack.posy]){

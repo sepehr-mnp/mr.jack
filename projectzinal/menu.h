@@ -12,7 +12,7 @@ void delay(int number_of_seconds) {
 
 int startMenu(){
     system("cls");
-    printf("0) start new game \n1)tel ver\n2)rewind\n3)load\nchoice: ");
+    printf("0) start new game \n1)tel ver\n2)rewind\n3)load\n4)choice: ");
     int choice;
     scanf("%d",&choice);
     bool t =FALSE;

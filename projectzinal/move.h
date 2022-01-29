@@ -78,7 +78,12 @@ bool movePose(int character){
     bool valid=0;
     printf("%d\n",n);
     do {n=n0;
+//
+        posx=posx0;
+        posy=posy0;
+        //
         do {
+
             int b = ((posy % 2) ? -1 : 1), possibleMovesCount = 0, possibleMoves[12][2];
             printf("possible moves:");
             if ((map[posx + 1][posy] == 0 || (map[posx + 1][posy] >= 4 && map[posx + 1][posy] <= 7) ||
@@ -114,7 +119,7 @@ bool movePose(int character){
             if ((map[posx + b][posy - 1] == 0 || (map[posx + b][posy - 1] >= 4 && map[posx + b][posy - 1] <= 7) ||
                 (map[posx + b][posy - 1] == 1 && ms1) || map[posx + b][posy - 1] > 10)  && posy-1>=0 && posy-1<=12 && posx+b>=0 && posx+b<=8){
                 possibleMoves[possibleMovesCount][0] = posx + b;
-                possibleMoves[possibleMovesCount][1] = posy + 1;
+                possibleMoves[possibleMovesCount][1] = posy - 1;
                 possibleMovesCount++;
             }if(map[posx][posy]==4){
                 for (int i = 0; i < 8; ++i) {
@@ -157,9 +162,9 @@ bool movePose(int character){
         }
         if (map[posx][posy] > 10 || (map[posx][posy]>=1 && map[posx][posy]<=3)) {
             jackUpdate();
-            if(character!= jack.n && posx==jack.posx && posy==jack.posy){
+            if(map[posx][posy] > 10 && character!= jack.n && posx==jack.posx && posy==jack.posy){
                 printf("detective won!");
-            }else{
+            }else if(map[posx][posy] > 10){
                 printf("jack won!");
             }
             getchar();
@@ -244,6 +249,9 @@ int moveNoTunel(int character,int ncount){
     printf("%d\n",n);
     do {
         n=n0;
+
+        posx=posx0;
+        posy=posy0;
         //printf(" *%d* ",n);
         do {
             // n=n0;
@@ -294,7 +302,7 @@ int moveNoTunel(int character,int ncount){
                                                                                             abs(posy-1-sg.posy)<abs(posy-sg.posy) ) && ((abs(posx+b-sg.posx)<=abs(posx-sg.posx) &&
                                                                                                                                          abs(posy-1-sg.posy)<=abs(posy-sg.posy))  )))&& posy>=0 && posy<=12 && posx+1>=0 && posx+1<=8){
                 possibleMoves[possibleMovesCount][0] = posx + b;
-                possibleMoves[possibleMovesCount][1] = posy + 1;
+                possibleMoves[possibleMovesCount][1] = posy - 1;
                 possibleMovesCount++;
             }
             for (int i = 0; i < possibleMovesCount; ++i) {
@@ -367,6 +375,7 @@ void move(int c,bool mrjack){
         movePose(1);
         int dir;
         jwlightcount=0;
+        printf("select direction: 0)up 1)right-up 2)right-down 3)down 4)left-down 5)left-up ");
         scanf("%d",&dir);
         if(dir==0)
             for (int i = jw.posx-1; i >= 0; --i){

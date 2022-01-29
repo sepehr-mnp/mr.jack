@@ -12,7 +12,7 @@ void save(int i0,int j0){
     //printf("%s +++",strmaptmp);
     //delay(5);
     fp = fopen(strmaptmp, "w");
-    fprintf(fp,"76\n");
+    fprintf(fp,"%d\n",mapelements);
     for (int i = 0; i < 9; ++i) {
         for (int j = 0; j < 13; ++j) {
             if(mapsakht[i][j]){
@@ -77,11 +77,11 @@ void save2(int i0,int j0){
     //strcat(strmaptmp,text);
     strcat(strmaptmp,".bin");
     savecount++;
-    printf("%s +++",strmaptmp);
+    //printf("%s +++",strmaptmp);
     //delay(5);
     fp = fopen(strmaptmp, "wb");
     //fprintf(fp,"76\n");
-    int num=76;
+    int num=mapelements;
     fwrite(&num, sizeof(int), 1, fp);
     for (int i = 0; i < 9; ++i) {
         for (int j = 0; j < 13; ++j) {
@@ -180,12 +180,16 @@ bool mapInput(bool undo){
     //delay(5);
     fp = fopen(strmaptmp, "r");
     if(fp==NULL && undo==0){
-        fp = fopen("C:\\Users\\NP\\CLionProjects\\projectzinal\\map.txt", "r");
+        char stringmap[128]="C:\\Users\\NP\\CLionProjects\\projectzinal\\";
+        strcat(stringmap,stringmapname);
+        strcat(stringmap,".txt");
+        fp = fopen(stringmap, "r");
     }else if(fp==NULL && undo==1){
         return 0;
     }
     int n;
     fscanf(fp,"%d",&n);
+    mapelements=n;
     printf("%d\n",n);
     for (int i = 0; i < n; ++i) {
         int x,y,m;
@@ -322,7 +326,7 @@ bool mapInput2(bool undo){
     }
     int n;
     fread(&n, sizeof(int), 1, fp);
-
+    mapelements=n;
     printf("%d\n",n);
     for (int i = 0; i < n; ++i) {
         int x,y,m;

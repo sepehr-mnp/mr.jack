@@ -4,7 +4,7 @@
 int map[9][13],mapsakht[9][13];
 bool mapl[9][13];
 int maplights[8][3],mapil[4][3],mapjb[8][3];
-
+char stringmapname[32]="map";
 struct seris * seris1,*seris2;
 //file save
 int i0=0,j0=0,savecount=0;
@@ -15,7 +15,7 @@ int suscardsremain=7;
 bool importedHand=0;
 char strmapname[16],strmap[128]="C:\\Users\\NP\\CLionProjects\\projectzinal\\saves\\";
 int jwlight[13][2],jwlightcount=0;
-
+int mapelements;
 
 struct jack{
     int n,posx,posy;

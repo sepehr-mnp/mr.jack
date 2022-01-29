@@ -8,7 +8,18 @@ int main() {
     int st = startMenu(0,0);
     if(!st) return 0;
     else if(st==2) mapInput2(0);
-    else mapInput(0);
+    else {
+        printf("default map?[0/1] ");
+        int tmpchoicemp;
+        scanf("%d",&tmpchoicemp);
+        if(tmpchoicemp==0) {
+            printf("map name: ");
+            stringmapname[0]='\0';
+            scanf("%s",&stringmapname);
+            //delay(5);
+        }
+        mapInput(0);
+    }
     save_starting_point:
     mapLight();
     mapPrint();

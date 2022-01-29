@@ -15,10 +15,10 @@ void mrjackalert(char a[],int jack){
     sprintf(jck, "%d", jack);
     strcat(str,jck);
     strcat(str,a);
-    printf("%s",str);
+    //printf("%s",str);
     FILE *fp = _popen(str,"r");
     fgets(strs,1000,fp);
-    printf("%s ",strs);
+    //printf("%s ",strs);
     _pclose(fp);
 }
 

@@ -74,7 +74,7 @@ else {
                     if(t==-1) goto save_starting_point;
                     j -= 1;
                 } else {
-                 //    move(handplay[chrcter],1);
+                    move(handplay[chrcter],1);
                     handplay[chrcter] = handplay[3 - j];
                     save(i,j+1);
                 }
@@ -86,7 +86,7 @@ else {
                     if(t==-1) goto save_starting_point;
                     j -= 1;
                 } else {
-                   //move(handplay[chrcter],1);
+                   move(handplay[chrcter],1);
                     handplay[chrcter] = handplay[3 - j];
                     save(i,j+1);
                 }

@@ -81,38 +81,38 @@ bool movePose(int character){
         do {
             int b = ((posy % 2) ? -1 : 1), possibleMovesCount = 0, possibleMoves[12][2];
             printf("possible moves:");
-            if (map[posx + 1][posy] == 0 || (map[posx + 1][posy] >= 4 && map[posx + 1][posy] <= 7) ||
-                (map[posx + 1][posy] == 1 && ms1) || map[posx + 1][posy] > 10) {
+            if ((map[posx + 1][posy] == 0 || (map[posx + 1][posy] >= 4 && map[posx + 1][posy] <= 7) ||
+                (map[posx + 1][posy] == 1 && ms1) || map[posx + 1][posy] > 10) && posy>=0 && posy<=12 && posx+1>=0 && posx+1<=8){
                 possibleMoves[possibleMovesCount][0] = posx + 1;
                 possibleMoves[possibleMovesCount][1] = posy;
                 possibleMovesCount++;
             }
-            if (map[posx - 1][posy] == 0 || (map[posx - 1][posy] >= 4 && map[posx - 1][posy] <= 7) ||
-                (map[posx - 1][posy] == 1 && ms1) || map[posx - 1][posy] > 10) {
+            if ((map[posx - 1][posy] == 0 || (map[posx - 1][posy] >= 4 && map[posx - 1][posy] <= 7) ||
+                (map[posx - 1][posy] == 1 && ms1) || map[posx - 1][posy] > 10)  && posy>=0 && posy<=12 && posx-1>=0 && posx-1<=8){
                 possibleMoves[possibleMovesCount][0] = posx - 1;
                 possibleMoves[possibleMovesCount][1] = posy;
                 possibleMovesCount++;
             }
-            if (map[posx][posy + 1] == 0 || (map[posx][posy + 1] >= 4 && map[posx][posy + 1] <= 7) ||
-                (map[posx][posy + 1] == 1 && ms1) || map[posx][posy + 1] > 10) {
+            if ((map[posx][posy + 1] == 0 || (map[posx][posy + 1] >= 4 && map[posx][posy + 1] <= 7) ||
+                (map[posx][posy + 1] == 1 && ms1) || map[posx][posy + 1] > 10)  && posy+1>=0 && posy+1<=12 && posx>=0 && posx<=8){
                 possibleMoves[possibleMovesCount][0] = posx;
                 possibleMoves[possibleMovesCount][1] = posy + 1;
                 possibleMovesCount++;
             }
-            if (map[posx][posy - 1] == 0 || (map[posx][posy - 1] >= 4 && map[posx][posy - 1] <= 7) ||
-                (map[posx][posy - 1] == 1 && ms1) || map[posx][posy - 1] > 10) {
+            if ((map[posx][posy - 1] == 0 || (map[posx][posy - 1] >= 4 && map[posx][posy - 1] <= 7) ||
+                (map[posx][posy - 1] == 1 && ms1) || map[posx][posy - 1] > 10)  && posy-1>=0 && posy-1<=12 && posx>=0 && posx<=8){
                 possibleMoves[possibleMovesCount][0] = posx;
                 possibleMoves[possibleMovesCount][1] = posy - 1;
                 possibleMovesCount++;
             }
-            if (map[posx + b][posy + 1] == 0 || (map[posx + b][posy + 1] >= 4 && map[posx + b][posy + 1] <= 7) ||
-                (map[posx + b][posy + 1] == 1 && ms1) || map[posx + b][posy + 1] > 10) {
+            if ((map[posx + b][posy + 1] == 0 || (map[posx + b][posy + 1] >= 4 && map[posx + b][posy + 1] <= 7) ||
+                (map[posx + b][posy + 1] == 1 && ms1) || map[posx + b][posy + 1] > 10)  && posy+1>=0 && posy+1<=12 && posx+b>=0 && posx+b<=8){
                 possibleMoves[possibleMovesCount][0] = posx + b;
                 possibleMoves[possibleMovesCount][1] = posy + 1;
                 possibleMovesCount++;
             }
-            if (map[posx + b][posy - 1] == 0 || (map[posx + b][posy - 1] >= 4 && map[posx + b][posy - 1] <= 7) ||
-                (map[posx + b][posy - 1] == 1 && ms1) || map[posx + b][posy - 1] > 10) {
+            if ((map[posx + b][posy - 1] == 0 || (map[posx + b][posy - 1] >= 4 && map[posx + b][posy - 1] <= 7) ||
+                (map[posx + b][posy - 1] == 1 && ms1) || map[posx + b][posy - 1] > 10)  && posy-1>=0 && posy-1<=12 && posx+b>=0 && posx+b<=8){
                 possibleMoves[possibleMovesCount][0] = posx + b;
                 possibleMoves[possibleMovesCount][1] = posy + 1;
                 possibleMovesCount++;
@@ -223,7 +223,6 @@ int moveNoTunel(int character,int ncount){
         posx=ms.posx;
         posy=ms.posy;
         n=ms.n-1;
-        ms1=1;
     }else if(character==5){
         posx=sg.posx;
         posy=sg.posy;
@@ -250,50 +249,50 @@ int moveNoTunel(int character,int ncount){
             // n=n0;
             int b = ((posy % 2) ? -1 : 1), possibleMovesCount = 0, possibleMoves[6][2];
             printf("possible moves:");
-            if ((map[posx + 1][posy] == 0 || (map[posx + 1][posy] >= 4 && map[posx + 1][posy] <= 7) ||
+            if (((map[posx + 1][posy] == 0 || (map[posx + 1][posy] >= 4 && map[posx + 1][posy] <= 7) ||
                  (map[posx + 1][posy] == 1 && ms1) || map[posx + 1][posy] > 10) && ((abs(posx+1-sg.posx)<abs(posx-sg.posx) ||
                                                                                      abs(posy-sg.posy)<abs(posy-sg.posy) ) && ((abs(posx+1-sg.posx)<=abs(posx-sg.posx) &&
-                                                                                                                                abs(posy-sg.posy)<=abs(posy-sg.posy))  ))) {
+                                                                                                                                abs(posy-sg.posy)<=abs(posy-sg.posy))  )))&& posy>=0 && posy<=12 && posx+1>=0 && posx+1<=8) {
                 possibleMoves[possibleMovesCount][0] = posx + 1;
                 possibleMoves[possibleMovesCount][1] = posy;
                 possibleMovesCount++;
             }
-            if ((map[posx - 1][posy] == 0 || (map[posx - 1][posy] >= 4 && map[posx - 1][posy] <= 7) ||
+            if (((map[posx - 1][posy] == 0 || (map[posx - 1][posy] >= 4 && map[posx - 1][posy] <= 7) ||
                  (map[posx - 1][posy] == 1 && ms1) || map[posx - 1][posy] > 10)&& ((abs(posx-1-sg.posx)<abs(posx-sg.posx) ||
                                                                                     abs(posy-sg.posy)<abs(posy-sg.posy) ) && ((abs(posx-1-sg.posx)<=abs(posx-sg.posx) &&
-                                                                                                                               abs(posy-sg.posy)<=abs(posy-sg.posy)) )))  {
+                                                                                                                               abs(posy-sg.posy)<=abs(posy-sg.posy)) ))) && posy>=0 && posy<=12 && posx+1>=0 && posx+1<=8) {
                 possibleMoves[possibleMovesCount][0] = posx - 1;
                 possibleMoves[possibleMovesCount][1] = posy;
                 possibleMovesCount++;
             }
-            if ((map[posx][posy + 1] == 0 || (map[posx][posy + 1] >= 4 && map[posx][posy + 1] <= 7) ||
+            if (((map[posx][posy + 1] == 0 || (map[posx][posy + 1] >= 4 && map[posx][posy + 1] <= 7) ||
                  (map[posx][posy + 1] == 1 && ms1) || map[posx][posy + 1] > 10)&& ((abs(posx-sg.posx)<abs(posx-sg.posx) ||
                                                                                     abs(posy+1-sg.posy)<abs(posy-sg.posy) ) && ((abs(posx-sg.posx)<=abs(posx-sg.posx) &&
-                                                                                                                                 abs(posy+1-sg.posy)<=abs(posy-sg.posy))  ))) {
+                                                                                                                                 abs(posy+1-sg.posy)<=abs(posy-sg.posy))  )))&& posy>=0 && posy<=12 && posx+1>=0 && posx+1<=8) {
                 possibleMoves[possibleMovesCount][0] = posx;
                 possibleMoves[possibleMovesCount][1] = posy + 1;
                 possibleMovesCount++;
             }
-            if ((map[posx][posy - 1] == 0 || (map[posx][posy - 1] >= 4 && map[posx][posy - 1] <= 7) ||
+            if (((map[posx][posy - 1] == 0 || (map[posx][posy - 1] >= 4 && map[posx][posy - 1] <= 7) ||
                  (map[posx][posy - 1] == 1 && ms1) || map[posx][posy - 1] > 10)&& ((abs(posx-sg.posx)<abs(posx-sg.posx) ||
                                                                                     abs(posy-1-sg.posy)<abs(posy-sg.posy) ) && ((abs(posx-sg.posx)<=abs(posx-sg.posx) &&
-                                                                                                                                 abs(posy-1-sg.posy)<=abs(posy-sg.posy))  ))) {
+                                                                                                                                 abs(posy-1-sg.posy)<=abs(posy-sg.posy))  )))&& posy>=0 && posy<=12 && posx+1>=0 && posx+1<=8) {
                 possibleMoves[possibleMovesCount][0] = posx;
                 possibleMoves[possibleMovesCount][1] = posy - 1;
                 possibleMovesCount++;
             }
-            if ((map[posx + b][posy + 1] == 0 || (map[posx + b][posy + 1] >= 4 && map[posx + b][posy + 1] <= 7) ||
+            if (((map[posx + b][posy + 1] == 0 || (map[posx + b][posy + 1] >= 4 && map[posx + b][posy + 1] <= 7) ||
                  (map[posx + b][posy + 1] == 1 && ms1) || map[posx + b][posy + 1] > 10)&& ((abs(posx+b-sg.posx)<abs(posx-sg.posx) ||
                                                                                             abs(posy+1-sg.posy)<abs(posy-sg.posy) ) && ((abs(posx+b-sg.posx)<=abs(posx-sg.posx) &&
-                                                                                                                                         abs(posy+1-sg.posy)<=abs(posy-sg.posy))  ))) {
+                                                                                                                                         abs(posy+1-sg.posy)<=abs(posy-sg.posy))  )))&& posy>=0 && posy<=12 && posx+1>=0 && posx+1<=8) {
                 possibleMoves[possibleMovesCount][0] = posx + b;
                 possibleMoves[possibleMovesCount][1] = posy + 1;
                 possibleMovesCount++;
             }
-            if ((map[posx + b][posy - 1] == 0 || (map[posx + b][posy - 1] >= 4 && map[posx + b][posy - 1] <= 7) ||
+            if (((map[posx + b][posy - 1] == 0 || (map[posx + b][posy - 1] >= 4 && map[posx + b][posy - 1] <= 7) ||
                  (map[posx + b][posy - 1] == 1 && ms1) || map[posx + b][posy - 1] > 10)&& ((abs(posx+b-sg.posx)<abs(posx-sg.posx) ||
                                                                                             abs(posy-1-sg.posy)<abs(posy-sg.posy) ) && ((abs(posx+b-sg.posx)<=abs(posx-sg.posx) &&
-                                                                                                                                         abs(posy-1-sg.posy)<=abs(posy-sg.posy))  ))){
+                                                                                                                                         abs(posy-1-sg.posy)<=abs(posy-sg.posy))  )))&& posy>=0 && posy<=12 && posx+1>=0 && posx+1<=8){
                 possibleMoves[possibleMovesCount][0] = posx + b;
                 possibleMoves[possibleMovesCount][1] = posy + 1;
                 possibleMovesCount++;
@@ -432,14 +431,15 @@ void move(int c,bool mrjack){
         if(choice){
             printf("lights to turn off: ");
             for (int i = 0; i < 8; ++i) {
-                if(maplights[i][2]==1) printf("%d ",i);
+                if(maplights[i][2]==1) printf("%d) x:%d y:%d ",i,maplights[i][0],maplights[i][1]);
             }scanf("%d",&choice);
-            maplights[choice][2]=0;
-            map[maplights[choice][0]][maplights[choice][1]] = 3;
             printf("lights to turn on: ");
             for (int i = 0; i < 8; ++i) {
-                if(maplights[i][2]==0) printf("%d ",i);
-            }scanf("%d",&choice);
+                if(maplights[i][2]==0) printf("%d) x:%d y:%d ",i,maplights[i][0],maplights[i][1]);
+            }
+            maplights[choice][2]=0;
+            map[maplights[choice][0]][maplights[choice][1]] = 3;
+            scanf("%d",&choice);
             maplights[choice][2]=1;
             map[maplights[choice][0]][maplights[choice][1]] = 2;
             mapLight();
@@ -449,14 +449,17 @@ void move(int c,bool mrjack){
             movePose(2);
             printf("lights to turn off: ");
             for (int i = 0; i < 8; ++i) {
-                if(maplights[i][2]==1) printf("%d ",i);
+                if(maplights[i][2]==1) printf("%d) x:%d y:%d ",i,maplights[i][0],maplights[i][1]);
             }scanf("%d",&choice);
-            maplights[choice][2]=0;
-            map[maplights[choice][0]][maplights[choice][1]] = 3;
             printf("lights to turn on: ");
             for (int i = 0; i < 8; ++i) {
-                if(maplights[i][2]==0) printf("%d ",i);
-            }scanf("%d",&choice);
+                if(maplights[i][2]==0) printf("%d) x:%d y:%d ",i,maplights[i][0],maplights[i][1]);
+            }
+            maplights[choice][2]=0;
+            map[maplights[choice][0]][maplights[choice][1]] = 3;
+
+            scanf("%d",&choice);
+
             maplights[choice][2]=1;
             map[maplights[choice][0]][maplights[choice][1]] = 2;
             mapLight();
@@ -502,6 +505,7 @@ void move(int c,bool mrjack){
                 }if(choice==5) continue;
                 else{
                     scanf("%d", &choice);
+                    if(choice==1) jwlightcount=0;
                     mcount -= moveNoTunel(choice, mcount);
                 }
             }
@@ -519,6 +523,7 @@ void move(int c,bool mrjack){
                 }if(choice==5) continue;
                 else{
                     scanf("%d", &choice);
+                    if(choice==1) jwlightcount=0;
                     mcount -= moveNoTunel(choice, mcount);
                 }
             }
@@ -530,7 +535,7 @@ void move(int c,bool mrjack){
         if(choice){
             printf("replace with: ");
             for (int i = 0; i < 8; ++i) {
-                if(i!=6 && i!=2){
+                if(i!=6 ){
                     printf("%d) ", i);
                     showCardName(i);
                     printf(" ");
@@ -557,6 +562,7 @@ void move(int c,bool mrjack){
                     wg.posy = jw.posy;
                     jw.posx = tmpx;
                     jw.posy = tmpy;
+                    jwlightcount=0;
                     break;
                 case 2:
                     map[js.posx][js.posy]=12;

@@ -12,14 +12,14 @@ void delay(int number_of_seconds) {
 
 int startMenu(){
     system("cls");
-    printf("0) start new game \n1)tel ver\n2)rewind\n3)load");
+    printf("0) start new game \n1)tel ver\n2)rewind\n3)load\nchoice: ");
     int choice;
     scanf("%d",&choice);
     bool t =FALSE;
     switch (choice) {
         case 1:
             tel=1;
-            printf("\nid:");
+            printf("\ngo to @Mrjackgamebot bot in telegram.\nstart it.\nget your chat id.\nid:");
             scanf("%s",&id);
             return 1;
             break;
@@ -45,6 +45,8 @@ int menu(int i,int j){
     printf("0) resume \n1)save\n2)undo\n");
     int choice;
     scanf("%d",&choice);
+    char strmaptmp[128];
+    int tmpsaveacount = savecount-1;
     switch (choice) {
         case 0:
             break;
@@ -52,8 +54,18 @@ int menu(int i,int j){
             save2(i,j);
             break;
         case 2:
+            strmaptmp[0]='\0';
+            FILE *fp;
+            strcat(strmaptmp,strmap);
+            strcat(strmaptmp,strmapname);
+            char text[20];
+
             savecount-=2;
             mapInput(1);
+            sprintf(text, "%d", tmpsaveacount);
+            strcat(strmaptmp,text);
+            strcat(strmaptmp,".txt");
+            remove(strmaptmp);
             mapLight();
             mapPrint();
             return -1;

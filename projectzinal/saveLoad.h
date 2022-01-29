@@ -290,6 +290,7 @@ bool mapInput(bool undo){
     for (int i = 0; i < n; ++i) {
         fscanf(fp,"%d",&(mrjacksher[i]));
     }fscanf(fp,"%d",&savecount);
+    fclose(fp);
     return 1;
 }
 

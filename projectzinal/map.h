@@ -69,21 +69,61 @@ void mapPrint(){
     int x=0,xx=-1;
     for (int i = 1; i <37 ; ++i) {
         for (int j = 0; j < 94; ++j) {
-
-            if((j-3)%14==0 &&((i-6)%4==0) &&map[xx][((j+4)/7)-1]!=8) {
+            //bug fix
+            if(j==10 && i == 32) {
+                if (mapl[7][1])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",7);
+            }else if(j==12 && i == 32) {
+                if (mapl[7][1])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",1);
+            }else if((j==24 && i == 8) || (j==26 && i==8)) {
+                printf("_");
+            }else if((j==68 && i == 8) || (j==66 && i==8)) {
+                printf("_");
+            }else if((j==52 && i == 4) || (j==54 && i==4)) {
+                printf("_");
+            }else if(j==38 && i == 32) {
+                if (mapl[7][5])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",7);
+            }else if(j==40 && i == 32) {
+                if (mapl[7][5])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",5);
+            }else if(j==52 && i == 36) {
+                if (mapl[8][7])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",8);
+            }else if(j==54 && i == 36) {
+                if (mapl[8][7])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",7);
+            }else if(j==80 && i == 32) {
+                if (mapl[7][11])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",7);
+            }else if(j==82 && i == 32) {
+                if (mapl[7][11])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",11);
+                j++;
+            }else if(j==80 && i == 4) {
+                if (mapl[0][11])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",0);
+            }else if(j==82 && i == 4) {
+                if (mapl[0][11])    SetConsoleTextAttribute(hConsole, 15);
+                printf("%d",11);
+                j++;
+            }
+            //
+            else if((j-3)%14==0 &&((i-6)%4==0) &&map[xx][((j+4)/7)-1]!=8 && xx>-1) {
                 if(mapl[xx][((j+4)/7)-1]) SetConsoleTextAttribute(hConsole, 15);
                 printf("%d",xx);
             }
-            else if((j-5)%14==0 &&((i-6)%4==0) && map[xx][((j+2)/7)-1]!=8) {
+            else if((j-5)%14==0 &&((i-6)%4==0) && map[xx][((j+2)/7)-1]!=8&& xx>-1) {
                 if(mapl[xx][((j+2)/7)-1]) SetConsoleTextAttribute(hConsole, 15);
                 printf("%d",((j+2)/7)-1);
                 if(((j-5)/7)>9) j++;
             }
-            else if((j-10)%14==0 && (i%4==0 )&& map[xx][(j-10)/7]!=8) {
+            else if((j-10)%14==0 && (i%4==0 )&& map[xx][(j-10)/7]!=8&& xx>-1) {
                 if(mapl[xx][((j+4)/7)-1]) SetConsoleTextAttribute(hConsole, 15);
                 printf("%d",xx);
             }
-            else if((j-12)%14==0 && (i%4==0)&& map[xx][(j-12)/7]!=8) {
+            else if((j-12)%14==0 && (i%4==0)&& map[xx][(j-12)/7]!=8&& xx>-1) {
                 if(mapl[xx][((j+2)/7)-1]) SetConsoleTextAttribute(hConsole, 15);
                 printf("%d",(j-5)/7);
                 if(((j-5)/7)>9) j++;

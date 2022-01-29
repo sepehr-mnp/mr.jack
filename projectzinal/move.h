@@ -123,7 +123,7 @@ bool movePose(int character){
                 possibleMovesCount++;
             }if(map[posx][posy]==4){
                 for (int i = 0; i < 8; ++i) {
-                    if(mapjb[i][0]!=posx && mapjb[i][1]!=posy && mapjb[i][2]==0){
+                    if((mapjb[i][0]!=posx || mapjb[i][1]!=posy) && mapjb[i][2]==0){
                         possibleMoves[possibleMovesCount][0]=mapjb[i][0];
                         possibleMoves[possibleMovesCount][1]=mapjb[i][1];
                         possibleMovesCount++;
@@ -138,17 +138,22 @@ bool movePose(int character){
             scanf("%d", &choice);
             if (choice ==-1) break;
             else if(choice==-2){
+
                 jackUpdate();
-                if(character!= jack.n && possibleMoves[choice][0]==jack.posx && possibleMoves[choice][1]==jack.posy){
+                if(character!= jack.n && posx==jack.posx && posy==jack.posy && detctive){
+                    system("cls");
                     printf("detective won!");
-                }else{
+                    scanf("");
+                }else if(detctive){
+                    system("cls");
                     printf("jack won!");
+                    scanf("");
                 }
                 getchar();
-            }
+            }else{
             posx = possibleMoves[choice][0];
             posy = possibleMoves[choice][1];
-            n--;
+            n--;}
         } while (n>0);
         if(map[posx][posy]==6){
             int mrjackposx0=jack.posx,mrjackposy0=jack.posy;
@@ -162,13 +167,19 @@ bool movePose(int character){
         }
         if (map[posx][posy] > 10 || (map[posx][posy]>=1 && map[posx][posy]<=3)) {
             jackUpdate();
-            if(map[posx][posy] > 10 && character!= jack.n && posx==jack.posx && posy==jack.posy){
+            if(map[posx][posy] > 10 && character!= jack.n && posx==jack.posx && posy==jack.posy&& detctive){
+                system("cls");
                 printf("detective won!");
-            }else if(map[posx][posy] > 10){
+                scanf("");
+            }else if(map[posx][posy] > 10 && (posx0!=posx || posy0!=posy) && detctive){
+                system("cls");
                 printf("jack won!");
+                scanf("");
+            }else{
+                printf("invalid move\n");
             }
             getchar();
-            printf("invalid move\n");
+
         } else {
             printf("valid move\n");
             valid=1;

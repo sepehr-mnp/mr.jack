@@ -9,17 +9,21 @@
 #include "cards.h"
 #include "move.h"
 #include "menu.h"
-void mrjackalert(char a[],int jack){
+bool mrjackalert(char a[],int jack){
     char strs[1000];
-    char str[256]="C:\\Users\\NP\\CLionProjects\\zinali\\curl\\curl.exe  http://mrjackgame.freehost.io/tel.php?id=",jck[2];
+    char str[256]="C:\\Users\\NP\\CLionProjects\\projectzinal\\curl\\curl.exe  http://mrjackgame.freehost.io/tel.php?id=",jck[2];
     sprintf(jck, "%d", jack);
     strcat(str,jck);
     strcat(str,a);
     //printf("%s",str);
     FILE *fp = _popen(str,"r");
+    if(!fp) return 0;
     fgets(strs,1000,fp);
+
     //printf("%s ",strs);
     _pclose(fp);
+
+    return 1;
 }
 
 int * pos(int character) {

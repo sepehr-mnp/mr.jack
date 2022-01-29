@@ -16,6 +16,7 @@ bool importedHand=0;
 char strmapname[16],strmap[128]="C:\\Users\\NP\\CLionProjects\\projectzinal\\saves\\";
 int jwlight[13][2],jwlightcount=0;
 int mapelements;
+bool detctive=0;
 
 struct jack{
     int n,posx,posy;

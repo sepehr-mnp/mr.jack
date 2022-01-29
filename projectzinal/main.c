@@ -40,7 +40,7 @@ int main() {
     else r=jack.n;
    if(tel==0) showCardName(r);
 else {
-    mrjackalert(id,r);
+    if(!mrjackalert(id,r)) showCardName(r);
        //printf("{{%d}}",r);
 
 }
@@ -78,7 +78,8 @@ else {
                     }
                 }
                 printf("\n");
-                printf("detective select: ");
+                detctive=1;
+                printf("detective select: -2) while moving: arrest  ");
                 scanf("%d", &chrcter);
                 if (chrcter == -3) {
                     int t = menu(i,j);
@@ -90,6 +91,7 @@ else {
                     save(i,j+1);
                 }
             } else {
+                detctive=0;
                 printf("jack select: ");
                 scanf("%d", &chrcter);
                 if (chrcter == -3) {

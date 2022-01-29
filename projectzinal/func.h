@@ -2,53 +2,24 @@
 #include <windows.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
 #include "structs.h"
-
-void jackUpdate() {
-    int n = jack.n;
-    switch (n) {
-        case 0:
-            jack.posx = sh.posx;
-            jack.posy = sh.posy;
-            break;
-        case 1:
-            jack.posx = jw.posx;
-            jack.posy = jw.posy;
-            break;
-        case 2:
-            jack.posx = js.posx;
-            jack.posy = js.posy;
-            break;
-        case 3:
-            jack.posx = il.posx;
-            jack.posy = il.posy;
-            break;
-        case 4:
-            jack.posx = ms.posx;
-            jack.posy = ms.posy;
-            break;
-        case 5:
-            jack.posx = sg.posx;
-            jack.posy = sg.posy;
-            break;
-        case 6:
-            jack.posx = wg.posx;
-            jack.posy = wg.posy;
-            break;
-        case 7:
-            jack.posx = jb.posx;
-            jack.posy = jb.posy;
-            break;
-    }
-}
-
-void delay(int number_of_seconds) {
-    int milli_seconds = 1000 * number_of_seconds;
-    clock_t start_time = clock();
-    while (clock() < start_time + milli_seconds);
-
+#include "saveLoad.h"
+#include "map.h"
+#include "cards.h"
+#include "move.h"
+#include "menu.h"
+void mrjackalert(char a[],int jack){
+    char strs[1000];
+    char str[256]="C:\\Users\\NP\\CLionProjects\\zinali\\curl\\curl.exe  http://mrjackgame.freehost.io/tel.php?id=",jck[2];
+    sprintf(jck, "%d", jack);
+    strcat(str,jck);
+    strcat(str,a);
+    printf("%s",str);
+    FILE *fp = _popen(str,"r");
+    fgets(strs,1000,fp);
+    printf("%s ",strs);
+    _pclose(fp);
 }
 
 int * pos(int character) {

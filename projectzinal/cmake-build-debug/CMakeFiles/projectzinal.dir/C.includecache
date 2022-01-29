@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/NP/CLionProjects/projectzinal/cards.h
+
 C:/Users/NP/CLionProjects/projectzinal/func.h
 stdio.h
 -
@@ -15,16 +17,34 @@ stdbool.h
 -
 stdlib.h
 -
-time.h
--
 string.h
 -
 structs.h
 C:/Users/NP/CLionProjects/projectzinal/structs.h
+saveLoad.h
+C:/Users/NP/CLionProjects/projectzinal/saveLoad.h
+map.h
+C:/Users/NP/CLionProjects/projectzinal/map.h
+cards.h
+C:/Users/NP/CLionProjects/projectzinal/cards.h
+move.h
+C:/Users/NP/CLionProjects/projectzinal/move.h
+menu.h
+C:/Users/NP/CLionProjects/projectzinal/menu.h
 
 C:/Users/NP/CLionProjects/projectzinal/main.c
 func.h
 C:/Users/NP/CLionProjects/projectzinal/func.h
+
+C:/Users/NP/CLionProjects/projectzinal/map.h
+
+C:/Users/NP/CLionProjects/projectzinal/menu.h
+time.h
+-
+
+C:/Users/NP/CLionProjects/projectzinal/move.h
+
+C:/Users/NP/CLionProjects/projectzinal/saveLoad.h
 
 C:/Users/NP/CLionProjects/projectzinal/structs.h
 

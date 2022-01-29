@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\zinali.dir/objects.a
+C:\clionming\bin\ar.exe cr CMakeFiles\zinali.dir/objects.a @CMakeFiles\zinali.dir\objects1.rsp
+C:\clionming\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\zinali.dir/objects.a -Wl,--no-whole-archive -o zinali.exe -Wl,--out-implib,libzinali.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\zinali.dir\linklibs.rsp

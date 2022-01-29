@@ -369,19 +369,21 @@ int moveNoTunel(int character,int ncount){
 
 int sussherlick(int mrjack) {
     int r = rand()%suscardsremain;
-    showCardName(suscards[r]);
+
     if(mrjack){
         mrjacksher[mrjackshercount]=r;
         mrjackshercount++;
     }
     suscards[r]=suscards[suscardsremain-1];
     suscardsremain--;
+        showCardName(suscards[r]);
+
 }
 void move(int c,bool mrjack){
     if(c==0){//sh
         movePose(0);
         sussherlick(mrjack);
-        printf(" is innocent!\n");
+        if(!mrjack) printf(" is innocent!\n");
     }else if(c==1){//jw
         movePose(1);
         int dir;

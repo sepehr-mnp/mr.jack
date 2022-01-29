@@ -72,14 +72,14 @@ else {
             if (hand[j]) {
                 printf("suses: ");
                 for (int k = 0; k < 8; ++k) {
-                    if ((exist(k) || k == jack.n )&& (exist2(k)==0)) {
+                    if (exist(k) || k == jack.n || exist2(k)) {
                         showCardName(k);
                         printf(" ");
                     }
                 }
                 printf("\n");
                 detctive=1;
-                printf("detective select: -2) while moving: arrest  ");
+                printf("detective select:  while moving: -2)arrest -1)stop * cards: ");
                 scanf("%d", &chrcter);
                 if (chrcter == -3) {
                     int t = menu(i,j);
@@ -92,7 +92,7 @@ else {
                 }
             } else {
                 detctive=0;
-                printf("jack select: ");
+                printf("jack select: while moving: -1)stop * cards: ");
                 scanf("%d", &chrcter);
                 if (chrcter == -3) {
                     int t = menu(i,j);

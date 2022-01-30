@@ -135,7 +135,7 @@ void mapPrint(){
                 if(map[x][(j-4)/7]==8){
                     //printf("\",map[x][(j-4)/7]);
                 }else if(map[x][(j-4)/7]==1){
-                    SetConsoleTextAttribute(hConsole, 238);
+                    SetConsoleTextAttribute(hConsole, 34);
                     printf("\b#");
                 }else if(map[x][(j-4)/7]==2){
                     SetConsoleTextAttribute(hConsole, 14);
@@ -150,7 +150,7 @@ void mapPrint(){
                 }else if(map[x][(j-4)/7]==6){
                     printf("\b\bEX");
                 }else if(map[x][(j-4)/7]==7){
-                    printf("\b\bEX");
+                    printf("\b\bex");
                 }else if(map[x][(j-4)/7]>10){
                     SetConsoleTextAttribute(hConsole, 12);
                     printf("\b\b%c%c",cardsMap[map[x][(j-4)/7]-11][0],cardsMap[map[x][(j-4)/7]-11][1]);
@@ -160,7 +160,7 @@ void mapPrint(){
                 if(map[x][(j-4)/7]==8){
                     //printf("\",map[x][(j-4)/7]);
                 }else if(map[x][(j-4)/7]==1){
-                    SetConsoleTextAttribute(hConsole, 238);
+                    SetConsoleTextAttribute(hConsole, 34);
                     printf("\b#");
                 }else if(map[x][(j-4)/7]==2){
                     SetConsoleTextAttribute(hConsole, 14);
@@ -175,7 +175,7 @@ void mapPrint(){
                 }else if(map[x][(j-4)/7]==6){
                     printf("\b\bEX");
                 }else if(map[x][(j-4)/7]==7){
-                    printf("\b\bEX");
+                    printf("\b\bex");
                 }else if(map[x][(j-4)/7]>10){
                     SetConsoleTextAttribute(hConsole, 12);
                     printf("\b\b%c%c",cardsMap[map[x][(j-4)/7]-11][0],cardsMap[map[x][(j-4)/7]-11][1]);

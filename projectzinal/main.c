@@ -79,7 +79,7 @@ else {
                 }
                 printf("\n");
                 detctive=1;
-                printf("detective select:  while moving: -2)arrest -1)stop * cards: ");
+                printf("detective select: -3)menu   while moving: -2)arrest -1)stop * cards: ");
                 scanf("%d", &chrcter);
                 if (chrcter == -3) {
                     int t = menu(i,j);
@@ -92,7 +92,7 @@ else {
                 }
             } else {
                 detctive=0;
-                printf("jack select: while moving: -1)stop * cards: ");
+                printf("jack select: -3)menu   while moving: -1)stop * cards: ");
                 scanf("%d", &chrcter);
                 if (chrcter == -3) {
                     int t = menu(i,j);

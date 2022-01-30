@@ -461,9 +461,11 @@ void move(int c,bool mrjack){
             }
             maplights[choice][2]=0;
             map[maplights[choice][0]][maplights[choice][1]] = 3;
+            mapsakht[maplights[choice][0]][maplights[choice][1]] = 3;
             scanf("%d",&choice);
             maplights[choice][2]=1;
             map[maplights[choice][0]][maplights[choice][1]] = 2;
+            mapsakht[maplights[choice][0]][maplights[choice][1]] = 2;
             mapLight();
             mapPrint();
             movePose(2);
@@ -479,11 +481,12 @@ void move(int c,bool mrjack){
             }
             maplights[choice][2]=0;
             map[maplights[choice][0]][maplights[choice][1]] = 3;
-
+            mapsakht[maplights[choice][0]][maplights[choice][1]] = 3;
             scanf("%d",&choice);
 
             maplights[choice][2]=1;
             map[maplights[choice][0]][maplights[choice][1]] = 2;
+            mapsakht[maplights[choice][0]][maplights[choice][1]] = 2;
             mapLight();
             mapPrint();
         }
@@ -504,9 +507,11 @@ void move(int c,bool mrjack){
             }
         }mapil[choice][2]=0;
         map[mapil[choice][0]][mapil[choice][1]]=6;
+        mapsakht[mapil[choice][0]][mapil[choice][1]]=6;
         scanf("%d",&choice);
         mapil[choice][2]=1;
         map[mapil[choice][0]][mapil[choice][1]]=7;
+        mapsakht[mapil[choice][0]][mapil[choice][1]]=7;
         mapPrint();
     }else if(c==4){//ms
         movePose(4);
@@ -652,9 +657,11 @@ void move(int c,bool mrjack){
                 }
             }mapjb[choice][2]=0;
             map[mapjb[choice][0]][mapjb[choice][1]]=4;
+            mapsakht[mapjb[choice][0]][mapjb[choice][1]]=4;
             scanf("%d",&choice);
             mapjb[choice][2]=1;
             map[mapjb[choice][0]][mapjb[choice][1]]=5;
+            mapsakht[mapjb[choice][0]][mapjb[choice][1]]=5;
             movePose(7);
         }else{
             movePose(7);
@@ -672,9 +679,11 @@ void move(int c,bool mrjack){
                 }
             }mapjb[choice][2]=0;
             map[mapjb[choice][0]][mapjb[choice][1]]=4;
+            mapsakht[mapjb[choice][0]][mapjb[choice][1]]=4;
             scanf("%d",&choice);
             mapjb[choice][2]=1;
             map[mapjb[choice][0]][mapjb[choice][1]]=5;
+            mapsakht[mapjb[choice][0]][mapjb[choice][1]]=5;
             mapPrint();
         }
     }
